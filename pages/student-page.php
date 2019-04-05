@@ -19,8 +19,8 @@
 							<a href="#" class="data-page-link">Open</a>
 						</div>
 						<div class="title">
-							<p class="name">P.Msfuhufe</p>
-							<p class="date">5/28/19</p>
+							<p class="name">Title</p>
+							<p class="date">Date</p>
 						</div>
 					</div>
 				</div>
@@ -58,8 +58,8 @@
 			<input id="apply-filters" name="filter-btn" type="button" value="Apply">
 		</div>
 		<input id="student-data-upload" name="upload" type="button" value="+Upload">
-		<form action="../includes/upload.inc.php" method="post" class="upload-new">
-			<span>Title</span><input id="title" placeholder="Auto-assign if left blank" name="title">
+		<form enctype="multipart/form-data" action="../includes/upload.inc.php" method="post" class="upload-new">
+			<span>Title</span><input id="title" name="title" required>
 			<input id="file" type="file" accept=".csv, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel" name="data">
 			<input id="upload-item" type="submit" value="Upload" name="upload-data">
 			<input id="cancel-upload" type="button" value="Cancel">

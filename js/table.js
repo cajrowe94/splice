@@ -7,7 +7,7 @@ const link = 'https://www.ncbi.nlm.nih.gov/protein/';
 //let title = document.getElementById('title');
 
 
-$(document).ready(function () {
+$(document).ready(function(){
   $.ajax({
         type: "GET",
         url: "../data/blast_table.csv",
@@ -16,7 +16,6 @@ $(document).ready(function () {
      });
 });
 
-
 //convert the csv file into a JSON object
 let parseData = data => {
   parsedData = Papa.parse(data, {
@@ -24,17 +23,11 @@ let parseData = data => {
   });
   //remove empty objects at the end of the array
   parsedData.data.splice(parsedData.data.length-1, 1);
-  //add a comment obj to each dataset
-  parsedData.data.forEach((obj)=>{
-    obj.addComment = "...";
-  });
 
   $("#title").html(">"+parsedData.data[0]['Input sequence ID']);
   //send table to be tabulated
   buildTable(parsedData.data);
 }
-
-
 
 //builds the table with the JSON object
 let buildTable = tableData => {

@@ -120,6 +120,8 @@
 							 $lastname
 						 );
 						 mysqli_stmt_execute($statement); //execute the new statement
+						 //make new directory for this user
+						 mkdir("../data/".$username);
 						 header("Location: ../pages/new-user-login.php?signup=success");
 						 exit();
 					}
@@ -131,7 +133,7 @@
 		 //**********************USER SUCCESSFULLY CREATED, END CONNECTION**********************//
 		 //*************************************************************************************//
 
-		 msqli_stmt_close($statement);
+		 mysqli_stmt_close($statement);
 		 mysqli_close($conn);
 	 }
 	 else {

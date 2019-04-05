@@ -1,4 +1,6 @@
-<?php include_once("../includes/headers.inc.php"); ?>
+<?php
+	include_once("../includes/headers.inc.php");
+?>
 <!DOCTYPE html>
 <html lang="en">
 <body>
