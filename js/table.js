@@ -5,16 +5,35 @@ let csvFile; //holds the csv file
 const link = 'https://www.ncbi.nlm.nih.gov/protein/';
 //title of the protein
 //let title = document.getElementById('title');
-
+//these are used to build the path directory
+let user;
+let filename;
 
 $(document).ready(function(){
   $.ajax({
         type: "GET",
-        url: "../data/blast_table.csv",
+        url: "../data/"+getQueryVariable("user")+"/"+getQueryVariable("filename"),
         dataType: "text",
         success: (data)=>{parseData(data);}
      });
 });
+
+let saveTable = () =>{
+  console.log("works");
+  console.log(table);
+  table.download("csv", getQueryVariable("filename"));
+};
+
+//https://css-tricks.com/snippets/javascript/get-url-variables/
+function getQueryVariable(variable){
+  var query = window.location.search.substring(1);
+  var vars = query.split("&");
+  for (var i=0;i<vars.length;i++) {
+         var pair = vars[i].split("=");
+         if(pair[0] == variable){return pair[1];}
+  }
+  return(false);
+}
 
 //convert the csv file into a JSON object
 let parseData = data => {
@@ -38,7 +57,7 @@ let buildTable = tableData => {
     columns:[
         {title:"Accession", field:"Accession", align:"center",  formatter:function(cell, formatterParams){
           let val = cell.getValue();
-          return "<a href=\"" + link + val + "\" target='_blank'>" + val + "</a>";
+          return "<a href=\"" + link + val + "\" target='_blank' style='text-decoration:none;'>" + val + "</a>";
         }, resizable: false},
         {title:"% identity", field:"% identity", align:"center"},
         {title:"Size", field:"Size", align:"center"},

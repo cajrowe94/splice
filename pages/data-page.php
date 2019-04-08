@@ -1,5 +1,6 @@
 <?php
 	include_once("../includes/headers.inc.php");
+	include_once("../includes/get-data.php");
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -22,8 +23,8 @@
     </div>
 	</section>
 	<section class="buttons">
-		<button>Save</button>
-		<button>Save and Export</button>
+		<button id="save-table" onclick="saveTable();">Save</button>
+		<button id="save-export-table">Save and Export</button>
 	</section>
 	<div class="comment-box">
 		<div class="comment-box-title">

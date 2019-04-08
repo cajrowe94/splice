@@ -12,11 +12,6 @@
     $filename = $_FILES['data']['name'];
     $uID = $_SESSION['userId'];
 
-    //move files into temporary location
-    $target_dir = "../data/".$_SESSION['uname']."/";
-    $target_file = $target_dir . basename($_FILES["data"]["name"]);
-    move_uploaded_file($data, $target_file);
-
     //**********CHECK FOR EMPTY FIELDS**************/
    if (empty($_FILES['data'])){
      header("Location: ../pages/student-page.php?error=nofilechosen");
@@ -46,7 +41,11 @@
         $data
        );
        mysqli_stmt_execute($statement);
-       header("Location: ../pages/data-page.php?upload=success");
+       header("Location: ../pages/student-page.php?upload=success");
+       //move files into temporary location
+       $target_dir = "../data/".$_SESSION['uname']."/";
+       $target_file = $target_dir . basename($_FILES["data"]["name"]);
+       move_uploaded_file($data, $target_file);
        exit();
      }
    }

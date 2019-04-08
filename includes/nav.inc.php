@@ -10,9 +10,9 @@
       //STUDENT PAGE
       //only show this nav item if the user is logged in
       if (isset($_SESSION['userId'])){
-        if ($activePage == "studentPage"){
-          echo '<li><a href="student-page.php" class="active">MY PAGE</a></li>';
-        } else echo '<li><a href="student-page.php">MY PAGE</a></li>';
+          if ($activePage == "studentPage"){
+            echo '<li><a href="student-page.php" class="active">MY PAGE</a></li>';
+          } else echo '<li><a href="student-page.php">MY PAGE</a></li>';
       }
 
       //REGISTER PAGE
