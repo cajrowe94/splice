@@ -18,10 +18,23 @@ $(document).ready(function(){
      });
 });
 
-let saveTable = () =>{
-  console.log("works");
+//saves the current table layout
+let saveTable = () => {
   console.log(table);
-  table.download("csv", getQueryVariable("filename"));
+  $.ajax({
+    type: 'POST',
+    data: table,
+    //change the url for your project
+    url: '../includes/save.inc.php',
+    success: function(data){
+        console.log(data);
+        alert('Success');
+    },
+    error: function(data){
+        console.log(data);
+        alert('Error');
+    }
+  });
 };
 
 //https://css-tricks.com/snippets/javascript/get-url-variables/
@@ -42,7 +55,6 @@ let parseData = data => {
   });
   //remove empty objects at the end of the array
   parsedData.data.splice(parsedData.data.length-1, 1);
-
   $("#title").html(">"+parsedData.data[0]['Input sequence ID']);
   //send table to be tabulated
   buildTable(parsedData.data);
