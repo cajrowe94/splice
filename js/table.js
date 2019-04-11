@@ -8,6 +8,7 @@ const link = 'https://www.ncbi.nlm.nih.gov/protein/';
 //these are used to build the path directory
 let user;
 let filename;
+let tableData;
 
 $(document).ready(function(){
   $.ajax({
@@ -20,19 +21,15 @@ $(document).ready(function(){
 
 //saves the current table layout
 let saveTable = () => {
-  console.log(table);
+  tableData = table.getData();
   $.ajax({
-    type: 'POST',
-    data: table,
-    //change the url for your project
-    url: '../includes/save.inc.php',
+    type: "POST",
+    url: "../includes/save.inc.php?user="+getQueryVariable("user"),
+    dataType: "text",
+    data: {data: JSON.stringify(tableData)},
     success: function(data){
         console.log(data);
         alert('Success');
-    },
-    error: function(data){
-        console.log(data);
-        alert('Error');
     }
   });
 };
