@@ -29,7 +29,7 @@
 					echo '
 					<section class="buttons">
 						<button id="save-table" onclick="saveTable();">Save</button>
-						<button id="save-export-table">Save and Export</button>
+						<button id="save-export-table" onclick="exportTable();">Save and Export</button>
 					</section>
 					';
 				}

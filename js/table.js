@@ -50,6 +50,11 @@ let saveTable = () => {
   });
 };
 
+//saves the current table layout
+let exportTable = () => {
+  table.download("csv", getQueryVariable("user")+"_table.csv");
+};
+
 //https://css-tricks.com/snippets/javascript/get-url-variables/
 function getQueryVariable(variable){
   var query = window.location.search.substring(1);
