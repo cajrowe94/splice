@@ -485,7 +485,8 @@ header {
 .buttons {
 	text-align: center;
 }
-.buttons button {
+.buttons button,
+#submit-comment {
 	margin: 10px;
 	font-size: 75%;
 	color: white;
@@ -496,7 +497,8 @@ header {
 	border: none;
 	transition: background .2s, box-shadow .2s;
 }
-.buttons button:hover {
+.buttons button:hover,
+#submit-comment:hover {
 	border: none;
 	outline: none;
 	background: #2525e0;
@@ -532,16 +534,19 @@ header {
 
 .comment-box {
 	position: absolute;
-	right: 40px;
+	right: 25px;
 	top: 150px;
 	height: 70%;
-	width: 300px;
-	box-shadow: 0px 2px 10px #AB9C86;
+	width: 325px;
+	border: 1px solid #BDBAB8;
 }
+
+/**********TITLE**************/
 .comment-box-title {
 	border-bottom: 1px solid #BDBAB8;
 	padding: 5px 0px;
 	background: #BDBAB8;
+	height: 6%;
 }
 .comment-box-title h3 {
 	font-size: 75%;
@@ -559,4 +564,32 @@ header {
 	left: 5;
 	color: #454443;
 	font-size: 85%;
+}
+
+/**********BODY**************/
+.comment-box-body {
+	height: 75%;
+	padding: 5px 0px;
+}
+.row-info {
+	display: flex;
+	justify-content: space-between;
+	padding: 14px 5px 10px 5px;
+	border-bottom: 1px solid #BDBAB8;
+}
+
+/**********FOOTER**************/
+.comment-box-footer {
+	background: #BDBAB8;
+	padding: 5px 2px;
+}
+.comment-box-footer textarea {
+	font-size: 50%;
+	width: 100%;
+	height: 100px;
+	resize: none;
+}
+.comment-box-footer #submit-comment {
+	float: right;
+	font-size: 55%;
 }

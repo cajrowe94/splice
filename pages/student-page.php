@@ -38,7 +38,7 @@
 									echo '
 										<div class="upload">
 											<div class="link-overlay">
-												<a href="data-page.php?filename='.$row['FileName'].'&user='.$_SESSION['uname'].'" class="data-page-link">Open</a>
+												<a href="data-page.php?filename='.$row['FileName'].'&user='.$_SESSION['uname'].'&title='.$row['Title'].'" class="data-page-link">Open</a>
 											</div>
 											<div class="title">
 												<p class="name">'.$row['Title'].'</p>

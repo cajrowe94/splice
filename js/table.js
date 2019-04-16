@@ -15,8 +15,25 @@ $(document).ready(function(){
         type: "GET",
         url: "../data/"+getQueryVariable("user")+"/"+getQueryVariable("filename"),
         dataType: "text",
-        success: (data)=>{parseData(data);}
-     });
+        success: (data)=>{
+          parseData(data);
+          //load saved data if it exists
+          $.ajax({
+            type: "HEAD",
+            url: "../data/"+getQueryVariable("user")+"/table.json",
+            success: (data)=>{
+              table.setData("../data/"+getQueryVariable("user")+"/table.json")
+              .then(()=>{
+                console.log("Saved data loaded.");
+                table.setData("../data/"+getQueryVariable("user")+"/table.json");
+              })
+              .catch(()=>{
+                console.log("No saved data found.");
+              });
+            }
+          });
+        }
+  });
 });
 
 //saves the current table layout
@@ -28,7 +45,6 @@ let saveTable = () => {
     dataType: "text",
     data: {data: JSON.stringify(tableData)},
     success: function(data){
-        console.log(data);
         alert('Success');
     }
   });
@@ -52,7 +68,9 @@ let parseData = data => {
   });
   //remove empty objects at the end of the array
   parsedData.data.splice(parsedData.data.length-1, 1);
-  $("#title").html(">"+parsedData.data[0]['Input sequence ID']);
+  let str = getQueryVariable("title");
+  let title = str.replace(/%20/g, " ");
+  $("#title").html(title+" :: "+parsedData.data[0]['Input sequence ID']);
   //send table to be tabulated
   buildTable(parsedData.data);
 }
@@ -73,6 +91,15 @@ let buildTable = tableData => {
         {title:"E score", field:"E score", align:"center"},
         {title:"Confirm", field:"confirm", align:"center", editor:true, formatter:"tickCross"},
     ],
+    rowClick: function(e, row){
+      let data = row['_row']['data'];
+      console.log(data);
+      $(".acc-cell").text(data['Accession']);
+      $(".id-cell").text(data['% identity']);
+      $(".size-cell").text(data['Size']);
+      $(".score-cell").text(data['E score']);
+      data['confirm'] ? $(".confirm-cell").text("Yes") : $(".confirm-cell").text("No");
+    },
   });
 }
 

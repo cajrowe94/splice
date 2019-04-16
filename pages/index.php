@@ -49,7 +49,7 @@
                   echo '
                     <div class="upload">
                       <div class="link-overlay">
-                        <a href="data-page.php?filename='.$row['FileName'].'&user='.$userrow['Username'].'" class="data-page-link">Open</a>
+                        <a href="data-page.php?filename='.$row['FileName'].'&user='.$userrow['Username'].'&title='.$row['Title'].'" class="data-page-link">Open</a>
                       </div>
                       <div class="title">
                         <p class="name">'.$userrow['FirstName']." ".$userrow['LastName'].": ".$row['Title'].'</p>
