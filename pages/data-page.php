@@ -1,6 +1,8 @@
 <?php
 	include_once("../includes/headers.inc.php");
 	include_once("../includes/get-data.php");
+	include '../includes/comment.inc.php';
+	date_default_timezone_set('America/Indianapolis');
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -67,10 +69,18 @@
 		<div class="comment-box-body">
 
 		</div>
-		<div class="comment-box-footer">
-			<textarea class="comment-text" wrap="physical" name="comments"></textarea>
-			<button id="submit-comment" onClick="postComment();">Submit</button>
-		</div>
+		<?php
+			if (isset($_SESSION['userId'])){
+				echo '
+				<form class="comment-box-footer" method="POST" action="'.setComment().'">
+					<input type="hidden" name="uId" value="Anonymous">
+					<input type="hidden" name="date" value="'.date('Y-m-d H:i:s').'">
+					<textarea class="comment-text" wrap="physical" name="message"></textarea>
+					<button name="commentSubmit" type="submit" id="submit-comment" onClick="postComment();">Post</button>
+				</form>
+				';
+			}
+		 ?>
 	</div>
 </body>
 </html>

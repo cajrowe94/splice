@@ -9,6 +9,8 @@ const link = 'https://www.ncbi.nlm.nih.gov/protein/';
 let user;
 let filename;
 let tableData;
+//current selected row
+let currentRow;
 
 $(document).ready(function(){
   $.ajax({
@@ -20,12 +22,12 @@ $(document).ready(function(){
           //load saved data if it exists
           $.ajax({
             type: "HEAD",
-            url: "../data/"+getQueryVariable("user")+"/table.json",
+            url: "../data/"+getQueryVariable("user")+"/"+getQueryVariable("title")+"_save.json",
             success: (data)=>{
-              table.setData("../data/"+getQueryVariable("user")+"/table.json")
+              table.setData("../data/"+getQueryVariable("user")+"/"+getQueryVariable("title")+"_save.json")
               .then(()=>{
                 console.log("Saved data loaded.");
-                table.setData("../data/"+getQueryVariable("user")+"/table.json");
+                table.setData("../data/"+getQueryVariable("user")+"/"+getQueryVariable("title")+"_save.json");
               })
               .catch(()=>{
                 console.log("No saved data found.");
@@ -41,17 +43,18 @@ let saveTable = () => {
   tableData = table.getData();
   $.ajax({
     type: "POST",
-    url: "../includes/save.inc.php?user="+getQueryVariable("user"),
+    url: "../includes/save.inc.php?user="+getQueryVariable("user")+"&title="+getQueryVariable("title"),
     dataType: "text",
     data: {data: JSON.stringify(tableData)},
     success: function(data){
-        alert('Success');
+        $("#save-table").css("background", "#20FF17").text("Save ✔");
     }
   });
 };
 
 //saves the current table layout
 let exportTable = () => {
+  saveTable();
   table.download("csv", getQueryVariable("user")+"_table.csv");
 };
 
@@ -80,6 +83,11 @@ let parseData = data => {
   buildTable(parsedData.data);
 }
 
+//handles posting comments
+let postComment = () => {
+  $("#save-table").css("background", "#3f3fea").text("Save");
+}
+
 //builds the table with the JSON object
 let buildTable = tableData => {
   table = new Tabulator("#data-table", {
@@ -96,14 +104,16 @@ let buildTable = tableData => {
         {title:"E score", field:"E score", align:"center"},
         {title:"Confirm", field:"confirm", align:"center", editor:true, formatter:"tickCross"},
     ],
+    selectable: 1,
     rowClick: function(e, row){
-      let data = row['_row']['data'];
-      console.log(data);
-      $(".acc-cell").text(data['Accession']);
-      $(".id-cell").text(data['% identity']);
-      $(".size-cell").text(data['Size']);
-      $(".score-cell").text(data['E score']);
-      data['confirm'] ? $(".confirm-cell").text("Yes") : $(".confirm-cell").text("No");
+      //reset save button
+      $("#save-table").css("background", "#3f3fea").text("Save");
+      currentRow = row['_row']['data'];
+      $(".acc-cell").text(currentRow['Accession']);
+      $(".id-cell").text(currentRow['% identity']);
+      $(".size-cell").text(currentRow['Size']);
+      $(".score-cell").text(currentRow['E score']);
+      currentRow['confirm'] ? $(".confirm-cell").text("Yes") : $(".confirm-cell").text("No");
     },
   });
 }
