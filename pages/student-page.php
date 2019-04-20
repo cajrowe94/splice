@@ -13,7 +13,7 @@
 				<div class="uploads-heading">
 					<h1 class="uploads-title">My Uploads</h1>
 				</div>
-				<div class="uploads-body">
+				<div class="uploads-body row">
 					<?php
 						if (isset($_SESSION['userId'])){
 							//get all of current user's uploads
@@ -36,9 +36,9 @@
 									$time = strtotime($row['UploadDate']);
 									$myFormatForView = date("m/d/y", $time);
 									echo '
-										<div class="upload">
+										<div class="upload col-md-3">
 											<div class="link-overlay">
-												<a href="data-page.php?filename='.$row['FileName'].'&user='.$_SESSION['uname'].'&title='.$row['Title'].'" class="data-page-link">Open</a>
+												<a href="data-page.php?filename='.$row['FileName'].'&user='.$_SESSION['uname'].'&title='.$row['Title'].'&#_='.$row['ItemID'].'" class="data-page-link">Open</a>
 											</div>
 											<div class="title">
 												<p class="name">'.$row['Title'].'</p>
@@ -48,7 +48,6 @@
 									';
 								}
 							}
-
 					}
 					else {
 						header("Location: index.php");

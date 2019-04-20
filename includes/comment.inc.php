@@ -6,6 +6,8 @@
       $id = $_POST['uId'];
       $date = $_POST['date'];
       $message = $_POST['message'];
+
+      $sql = "INSERT INTO comment (CommentDate, CommentText, UserID, ItemID) VALUES ()";
     }
 
   }

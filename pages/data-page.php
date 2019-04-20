@@ -1,6 +1,5 @@
 <?php
 	include_once("../includes/headers.inc.php");
-	include_once("../includes/get-data.php");
 	include '../includes/comment.inc.php';
 	date_default_timezone_set('America/Indianapolis');
 ?>
@@ -68,12 +67,17 @@
 		</div>
 		<div class="comment-box-body">
 
+		<?php
+				//this is where you will loop through all comments for each row
+		?>
+
 		</div>
 		<?php
 			if (isset($_SESSION['userId'])){
 				echo '
 				<form class="comment-box-footer" method="POST" action="'.setComment().'">
-					<input type="hidden" name="uId" value="Anonymous">
+					<input type="hidden" name="uId" value="'.$_SESSION['userId'].'">
+					<input type="hidden" name="itemId" value="'.$_SESSION['userId'].'">
 					<input type="hidden" name="date" value="'.date('Y-m-d H:i:s').'">
 					<textarea class="comment-text" wrap="physical" name="message"></textarea>
 					<button name="commentSubmit" type="submit" id="submit-comment" onClick="postComment();">Post</button>

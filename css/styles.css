@@ -25,7 +25,7 @@ header {
 	margin: 0 auto;
 	padding: 3px;
 	width: 30%;
-	height: 35px;
+	height: 41px;
 	justify-content: center;
 }
 .main-nav h1 {
@@ -316,13 +316,10 @@ header {
 	font-size: 110%;
 }
 .uploads-body {
-	display: flex;
-	justify-content: space-around;
+	justify-content: center;
 }
 .uploads-body .upload {
 	position: relative;
-	flex: 1;
-	width: 25%;
 	height: 175px;
 	border: 1px solid rgb(100,1,6);
 	background-color: rgb(100,1,6);
@@ -425,11 +422,11 @@ header {
 /*-------------DATA PAGE------------*/
 /*----------------------------------*/
 
-.data-main {
+.section-main .data-main {
 	width: 75%;
 	margin: 20px auto;
 }
-.data-title {
+.section-main .data-main .data-title{
 	position: relative;
 	z-index: 999;
 	letter-spacing: 1px;
@@ -440,7 +437,11 @@ header {
 	font-weight: 100;
 	box-shadow: 0px 2px 10px black;
 }
-.data-body {
+.section-main .data-main .data-title #title {
+	font-size: 100%;
+	margin: 0;
+}
+.data-main .data-body {
 	background: white;
 	box-shadow: 0px 2px 10px #AB9C86;
 	height: 75%;
@@ -513,9 +514,9 @@ header {
 	border-bottom: 1px solid #BDBAB8;
 	padding: 5px 0px;
 	background: #BDBAB8;
-	height: 6%;
 }
 .comment-box-title h3 {
+	margin:0;
 	font-size: 75%;
 	color: #454443;
 	text-align: center;
@@ -524,6 +525,8 @@ header {
 	color: #454443;
 	text-align: center;
 	font-size: 50%;
+	margin-bottom: 2px;
+	padding: 0px;
 }
 .comment-box-title ion-icon {
 	position: absolute;
@@ -540,8 +543,9 @@ header {
 }
 .row-info {
 	display: flex;
+	background: #feffff;
 	justify-content: space-between;
-	padding: 14px 5px 10px 5px;
+	padding: 5px 5px 10px 5px;
 	border-bottom: 1px solid #BDBAB8;
 }
 .row-info .col-name {

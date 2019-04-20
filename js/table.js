@@ -14,27 +14,27 @@ let currentRow;
 
 $(document).ready(function(){
   $.ajax({
-        type: "GET",
-        url: "../data/"+getQueryVariable("user")+"/"+getQueryVariable("filename"),
-        dataType: "text",
+    type: "GET",
+    url: "../data/"+getQueryVariable("user")+"/"+getQueryVariable("filename"),
+    dataType: "text",
+    success: (data)=>{
+      parseData(data);
+      //load saved data if it exists
+      $.ajax({
+        type: "HEAD",
+        url: "../data/"+getQueryVariable("user")+"/"+getQueryVariable("title")+"_save.json",
         success: (data)=>{
-          parseData(data);
-          //load saved data if it exists
-          $.ajax({
-            type: "HEAD",
-            url: "../data/"+getQueryVariable("user")+"/"+getQueryVariable("title")+"_save.json",
-            success: (data)=>{
-              table.setData("../data/"+getQueryVariable("user")+"/"+getQueryVariable("title")+"_save.json")
-              .then(()=>{
-                console.log("Saved data loaded.");
-                table.setData("../data/"+getQueryVariable("user")+"/"+getQueryVariable("title")+"_save.json");
-              })
-              .catch(()=>{
-                console.log("No saved data found.");
-              });
-            }
+          table.setData("../data/"+getQueryVariable("user")+"/"+getQueryVariable("title")+"_save.json")
+          .then(()=>{
+            console.log("Saved data loaded.");
+            table.setData("../data/"+getQueryVariable("user")+"/"+getQueryVariable("title")+"_save.json");
+          })
+          .catch(()=>{
+            console.log("No saved data found.");
           });
         }
+      });
+    }
   });
 });
 

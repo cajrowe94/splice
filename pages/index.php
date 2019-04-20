@@ -13,7 +13,7 @@
       <div class="uploads-heading">
         <h1 class="uploads-title">Student Uploads</h1>
       </div>
-      <div class="uploads-body">
+      <div class="uploads-body row">
         <?php
             //get all of current user's uploads
             require '../includes/dbh.inc.php';
@@ -47,9 +47,9 @@
                   $time = strtotime($row['UploadDate']);
                   $myFormatForView = date("m/d/y", $time);
                   echo '
-                    <div class="upload">
+                    <div class="upload col-xs-6 col-md-3">
                       <div class="link-overlay">
-                        <a href="data-page.php?filename='.$row['FileName'].'&user='.$userrow['Username'].'&title='.$row['Title'].'" class="data-page-link">Open</a>
+                        <a href="data-page.php?filename='.$row['FileName'].'&user='.$userrow['Username'].'&title='.$row['Title'].'&#_='.$row['ItemID'].'" class="data-page-link">Open</a>
                       </div>
                       <div class="title">
                         <p class="name">'.$userrow['FirstName']." ".$userrow['LastName'].'</p>
@@ -59,7 +59,6 @@
                     </div>
                   ';
                 }
-
               }
             }
       ?>
