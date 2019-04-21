@@ -13,6 +13,8 @@ let tableData;
 let currentRow;
 
 $(document).ready(function(){
+  $('textarea[name="message"]').hide();
+  $('#submit-comment').hide();
   $.ajax({
     type: "GET",
     url: "../data/"+getQueryVariable("user")+"/"+getQueryVariable("filename"),
@@ -106,6 +108,8 @@ let buildTable = tableData => {
     ],
     selectable: 1,
     rowClick: function(e, row){
+      $('textarea[name="message"]').show();
+      $('#submit-comment').show();
       //reset save button
       $("#save-table").css("background", "#3f3fea").text("Save");
       currentRow = row['_row']['data'];

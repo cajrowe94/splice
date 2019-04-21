@@ -74,15 +74,18 @@
 		</div>
 		<?php
 			if (isset($_SESSION['userId'])){
-				echo '
-				<form class="comment-box-footer" method="POST" action="'.setComment().'">
-					<input type="hidden" name="uId" value="'.$_SESSION['userId'].'">
-					<input type="hidden" name="itemId" value="'.$_SESSION['userId'].'">
-					<input type="hidden" name="date" value="'.date('Y-m-d H:i:s').'">
-					<textarea class="comment-text" wrap="physical" name="message"></textarea>
-					<button name="commentSubmit" type="submit" id="submit-comment" onClick="postComment();">Post</button>
-				</form>
-				';
+				if (isset($_GET['v'])){
+					echo '
+					<form class="comment-box-footer" method="POST" action="'.setComment().'">
+						<input type="hidden" name="uId" value="'.$_SESSION['userId'].'">
+						<input type="hidden" name="itemId" value="'.$_GET['v'].'">
+						<input type="hidden" name="rowId" value="">
+						<input type="hidden" name="date" value="'.date('Y-m-d H:i:s').'">
+						<textarea class="comment-text" wrap="physical" name="message"></textarea>
+						<button name="commentSubmit" type="submit" id="submit-comment" onClick="postComment();">Post</button>
+					</form>
+					';
+				}
 			}
 		 ?>
 	</div>
