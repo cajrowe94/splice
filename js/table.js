@@ -108,16 +108,27 @@ let buildTable = tableData => {
     ],
     selectable: 1,
     rowClick: function(e, row){
+      $('.comment-box-body').html("");
+      currentRow = row['_row']['data'];
+      let currentID = currentRow['Accession']+"_"+currentRow['% identity'];
+      //only show the comment menu when a row is clicked
       $('textarea[name="message"]').show();
       $('#submit-comment').show();
+      //set the rowid after each new click
+      $('input[name="rowId"]').attr("value", currentID);
+      //console.log();
       //reset save button
       $("#save-table").css("background", "#3f3fea").text("Save");
-      currentRow = row['_row']['data'];
       $(".acc-cell").text(currentRow['Accession']);
       $(".id-cell").text(currentRow['% identity']);
       $(".size-cell").text(currentRow['Size']);
       $(".score-cell").text(currentRow['E score']);
       currentRow['confirm'] ? $(".confirm-cell").text("Yes") : $(".confirm-cell").text("No");
+
+      //run code to fetch comments for this row
+      let script = "<?php getComments($conn, "+currentID+"); ?>";
+      //console.log(script);
+      $('.comment-box-body').html(script);
     },
   });
 }

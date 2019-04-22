@@ -553,7 +553,22 @@ header {
 	border-bottom: 1px solid #BDBAB8;
 	margin-bottom: 2px;
 }
-
+.comment {
+	margin:5px;
+	padding:0;
+	border-bottom: 1px solid #E1E1E1;
+}
+.comment .comment-message {
+	font-size: 60%;
+	padding: 5px;
+	margin:0;
+}
+.comment .comment-author {
+	font-size: 50%;
+	padding: 0;
+	margin:0;
+	text-align: right;
+}
 /**********FOOTER**************/
 .comment-box-footer {
 	background: #BDBAB8;

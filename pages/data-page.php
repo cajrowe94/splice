@@ -1,6 +1,7 @@
 <?php
 	include_once("../includes/headers.inc.php");
 	include '../includes/comment.inc.php';
+	include '../includes/dbh.inc.php';
 	date_default_timezone_set('America/Indianapolis');
 ?>
 <!DOCTYPE html>
@@ -10,6 +11,7 @@
 		<?php
 			$activePage = "dataPage";
 			include_once("../includes/nav.inc.php");
+			//get all comments for this page
 		?>
 	</header>
 	<section class="section-main">
@@ -66,23 +68,21 @@
 			</div>
 		</div>
 		<div class="comment-box-body">
-
-		<?php
-				//this is where you will loop through all comments for each row
-		?>
-
+			<?php
+				getComments($conn, "WP_022963145.1_100");
+			 ?>
 		</div>
 		<?php
 			if (isset($_SESSION['userId'])){
 				if (isset($_GET['v'])){
 					echo '
-					<form class="comment-box-footer" method="POST" action="'.setComment().'">
+					<form class="comment-box-footer" method="POST" action="'.setComment($conn).'">
 						<input type="hidden" name="uId" value="'.$_SESSION['userId'].'">
 						<input type="hidden" name="itemId" value="'.$_GET['v'].'">
 						<input type="hidden" name="rowId" value="">
 						<input type="hidden" name="date" value="'.date('Y-m-d H:i:s').'">
 						<textarea class="comment-text" wrap="physical" name="message"></textarea>
-						<button name="commentSubmit" type="submit" id="submit-comment" onClick="postComment();">Post</button>
+						<input name="commentSubmit" type="submit" id="submit-comment"></input>
 					</form>
 					';
 				}
