@@ -38,8 +38,6 @@
 						exit();
 					}
 					else if ($pwdCheck == true){
-						//delete temp guest directory
-						rmdir("../data/".$_SESSION['userId']);
 						//start a session and assign _SESSION variables
 						session_start();
 						$_SESSION['userId'] = $row['UserID'];

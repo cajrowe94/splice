@@ -13,6 +13,18 @@ let tableData;
 let currentRow;
 
 $(document).ready(function(){
+  $('.comment-box').css("display", "none");
+
+  if ( window.history.replaceState ) {
+        window.history.replaceState( null, null, window.location.href );
+  }
+
+  let closeLink = document.getElementById("close-comments");
+  closeLink.addEventListener("click",function(){
+    $('.comment-box').css("display", "none");
+  });
+
+  $('.comment-box-body').css("visibility", "hidden");
   $('textarea[name="message"]').hide();
   $('#submit-comment').hide();
   $.ajax({
@@ -108,15 +120,16 @@ let buildTable = tableData => {
     ],
     selectable: 1,
     rowClick: function(e, row){
-      $('.comment-box-body').html("");
+      $('.comment-box').css("display", "block");
       currentRow = row['_row']['data'];
-      let currentID = currentRow['Accession']+"_"+currentRow['% identity'];
+      let id = currentRow['Accession']+currentRow['% identity'];
+      let currentID = id.replace(/[._]/g,'');
+      console.log(currentID);
       //only show the comment menu when a row is clicked
       $('textarea[name="message"]').show();
       $('#submit-comment').show();
       //set the rowid after each new click
       $('input[name="rowId"]').attr("value", currentID);
-      //console.log();
       //reset save button
       $("#save-table").css("background", "#3f3fea").text("Save");
       $(".acc-cell").text(currentRow['Accession']);
@@ -124,11 +137,23 @@ let buildTable = tableData => {
       $(".size-cell").text(currentRow['Size']);
       $(".score-cell").text(currentRow['E score']);
       currentRow['confirm'] ? $(".confirm-cell").text("Yes") : $(".confirm-cell").text("No");
-
-      //run code to fetch comments for this row
-      let script = "<?php getComments($conn, "+currentID+"); ?>";
-      //console.log(script);
-      $('.comment-box-body').html(script);
+      //make the comment body visible
+      $('.comment-box-body').css("visibility", "visible");
+      //get all comments in an object
+      let comments = document.getElementsByClassName("comment");
+      //console.log(comments[0]['classList'][1]);
+      //loop through each comment
+      for (let i = 0; i < comments.length; i++){
+        let activeID = comments[i]['classList'][1];
+        //if the id matches current selected row
+        if (activeID == currentID){
+          console.log(activeID+" matches "+currentID);
+          $('.'+activeID).css("display", "block");
+        } else {
+          console.log(activeID+" does not match "+currentID);
+          $('.'+activeID).css("display", "none");
+        }
+      }
     },
   });
 }

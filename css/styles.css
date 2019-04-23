@@ -502,11 +502,14 @@ header {
 
 .comment-box {
 	position: absolute;
-	right: 25px;
-	top: 150px;
+	left: 50%;
+	top: 50%;
 	height: 70%;
-	width: 325px;
+	width: 30%;
+	transform: translate(-50%, -50%);
 	border: 1px solid #BDBAB8;
+	background: white;
+	box-shadow: 0px 2px 30px gray;
 }
 
 /**********TITLE**************/
@@ -535,11 +538,19 @@ header {
 	color: #454443;
 	font-size: 85%;
 }
+.comment-box-title #close-comments {
+	position: absolute;
+	top: -3;
+	right: 2;
+	width: 25px;
+	color: #454443;
+}
 
 /**********BODY**************/
 .comment-box-body {
 	height: 75%;
 	padding: 5px 0px;
+	overflow: scroll;
 }
 .row-info {
 	display: flex;
@@ -554,20 +565,32 @@ header {
 	margin-bottom: 2px;
 }
 .comment {
+	position: relative;
 	margin:5px;
 	padding:0;
 	border-bottom: 1px solid #E1E1E1;
 }
 .comment .comment-message {
-	font-size: 60%;
+	font-size: 65%;
 	padding: 5px;
 	margin:0;
 }
-.comment .comment-author {
-	font-size: 50%;
+.comment .comment-author{
+	font-size: 45%;
 	padding: 0;
 	margin:0;
-	text-align: right;
+}
+.comment .comment-date{
+	font-size: 45%;
+	font-style: italic;
+	padding: 0;
+	margin:0;
+}
+.hide-comment {
+	display: none;
+}
+.show-comment {
+	display: block;
 }
 /**********FOOTER**************/
 .comment-box-footer {

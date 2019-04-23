@@ -11,7 +11,6 @@
 		<?php
 			$activePage = "dataPage";
 			include_once("../includes/nav.inc.php");
-			//get all comments for this page
 		?>
 	</header>
 	<section class="section-main">
@@ -40,9 +39,10 @@
 		}
 	 ?>
 	<div class="comment-box">
-		<div class="comment-box-title">
+		<div class="comment-box-title" id="move-me">
 			<h3>Comments</h3>
 			<ion-icon name='chatboxes'></ion-icon>
+			<a href="#" id="close-comments"><ion-icon name="close"></ion-icon></a>
 			<p>Select a row to see it's comments</p>
 			<div class="row-info">
 				<div class="col-info">
@@ -69,8 +69,33 @@
 		</div>
 		<div class="comment-box-body">
 			<?php
-				getComments($conn, "WP_022963145.1_100");
-			 ?>
+			//get all comments for this item
+		  //query for all comments
+			if (isset($_GET['v'])){
+				$itemid = $_GET['v'];
+				$sql = "SELECT * FROM comment
+			          WHERE ItemID = '$itemid'";
+			  $result = $conn->query($sql);
+			  $row = $result->fetch_assoc();
+			  //assign all data to session variables
+			  while($row = $result->fetch_assoc()){
+					$id = $row['UserID'];
+					$time = strtotime($row['CommentDate']);
+					$dateFormat = date("m/d/y", $time);
+					$timeFormat = date("g:i A", $time);
+					$usersql = "SELECT * FROM user
+				          WHERE UserID = '$id'";
+					$userresult = $conn->query($usersql);
+				  $userrow = $userresult->fetch_assoc();
+					echo '<div class="comment '.$row['RowID'].'">
+						<p class="comment-message">'.$row['CommentText'].'</p>
+						<span class="comment-author">'.$userrow['FirstName'].' '.$userrow['LastName'].'</span>
+						<span class="comment-date">'.$dateFormat.' @ '.$timeFormat.'</span>
+					</div>';
+			  }
+			}
+
+			?>
 		</div>
 		<?php
 			if (isset($_SESSION['userId'])){
