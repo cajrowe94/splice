@@ -8,7 +8,6 @@ function setComment($conn){
     $message = $_POST['message'];
     $itemid = $_POST['itemId'];
     $rowid = $_POST['rowId'];
-
     $sql = "INSERT INTO comment (CommentDate, CommentText, UserID, ItemID, RowID)
             VALUES ('$date', '$message', '$id', '$itemid', '$rowid')";
     $result = $conn->query($sql);

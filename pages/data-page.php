@@ -76,7 +76,7 @@
 				$sql = "SELECT * FROM comment
 			          WHERE ItemID = '$itemid'";
 			  $result = $conn->query($sql);
-			  $row = $result->fetch_assoc();
+			  //$row = $result->fetch_assoc();
 			  //assign all data to session variables
 			  while($row = $result->fetch_assoc()){
 					$id = $row['UserID'];

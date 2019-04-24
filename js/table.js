@@ -15,8 +15,8 @@ let currentRow;
 $(document).ready(function(){
   $('.comment-box').css("display", "none");
 
-  if ( window.history.replaceState ) {
-        window.history.replaceState( null, null, window.location.href );
+  if (window.history.replaceState){
+        window.history.replaceState(null, null, window.location.href);
   }
 
   let closeLink = document.getElementById("close-comments");

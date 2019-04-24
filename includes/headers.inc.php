@@ -6,6 +6,7 @@
   <link rel="stylesheet" href="../js/libs/tabulator/dist/css/tabulator.min.css">
   <link href="https://fonts.iu.edu/style.css?family=BentonSans:regular,bold|BentonSansCond:regular|GeorgiaPro:regular" media="screen" rel="stylesheet" type="text/css"/>
   <link href="../css/styles.css" rel="stylesheet" type="text/css" />
+  <link href="../css/media-queries.css" rel="stylesheet" type="text/css" />
   <link href="https://fonts.googleapis.com/css?family=Audiowide" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css?family=Kanit" rel="stylesheet">
   <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
