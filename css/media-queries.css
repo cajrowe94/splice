@@ -1,5 +1,17 @@
 @media only screen and (max-width: 1100px){
   .main-nav .user-login {
-    display: none;
+    position: absolute;
+    visibility: hidden;
+  	top: 43;
+  	right: 5;
+  	background: rgb(100,1,6);
+  	padding: 10px;
+  	border-radius: 5px;
+    z-index: 9999;
   }
+  #login-dropdown {display: inline-block;}
+  .title .name {font-size: 80%;}
+  .title .date,
+  .title .proj-title {font-size: 60%;}
+  .student-uploads {width: 100%;}
 }

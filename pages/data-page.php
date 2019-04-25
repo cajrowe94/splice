@@ -7,6 +7,9 @@
 <!DOCTYPE html>
 <html lang="en">
 <body>
+	<head>
+		<script type="text/javascript" src="../js/table.js"></script>
+	</head>
 	<header>
 		<?php
 			$activePage = "dataPage";

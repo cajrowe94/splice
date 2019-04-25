@@ -105,7 +105,7 @@ let postComment = () => {
 //builds the table with the JSON object
 let buildTable = tableData => {
   table = new Tabulator("#data-table", {
-    height: "100%",
+    height: "75vh",
     layout: "fitColumns",
     data: tableData,
     columns:[

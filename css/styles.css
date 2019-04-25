@@ -142,6 +142,34 @@ header {
 	color: white;
 	font-size: 80%;
 }
+#login-dropdown {
+	display: none;
+	position: absolute;
+	top: 8;
+	right: 10;
+	text-decoration: none;
+	color: white;
+	font-size: 60%;
+	font-style: italic;
+	font-family: BentonSansRegular,"Helvetica Neue",Helvetica,Helvetica,Arial,sans-serif;
+	transition: font-size .2s;
+}
+#login-dropdown:active, #login-dropdown:visited, #login-dropdown:focus, #login-dropdown:hover {
+	text-decoration: none;
+	color: white;
+}
+#login-dropdown:hover {
+	font-size: 65%;
+}
+.responsive-login {
+	position: absolute;
+	display: block;
+	top: 43;
+	right: 5;
+	background: rgb(100,1,6);
+	padding: 10px;
+	border-radius: 5px;
+}
 
 /*----------------------------------*/
 /*-------------REUSABLES------------*/

@@ -41,7 +41,8 @@
     //if no user is logged in, echo out the login form
     else {
       echo '
-      <form action="../includes/login.inc.php" method="post" class="user-login">
+      <a href="#" id="login-dropdown">Login</a>
+      <form action="../includes/login.inc.php" method="post" class="user-login" id="login-form">
         <input type="text" name="unameid" placeholder="Username/Email"><br>
         <input type="password" name="pword" placeholder="Password"><br>
         <input name="login-user" type="submit" value="Login">
