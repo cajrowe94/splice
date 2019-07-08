@@ -35,17 +35,44 @@
 									//convert time to a readable format
 									$time = strtotime($row['UploadDate']);
 									$myFormatForView = date("m/d/y", $time);
-									echo '
-										<div class="upload col-md-3">
-											<div class="link-overlay">
-												<a href="data-page.php?filename='.$row['FileName'].'&user='.$_SESSION['uname'].'&title='.$row['Title'].'&v='.$row['ItemID'].'" class="data-page-link">Open</a>
-											</div>
-											<div class="title">
-												<p class="name">'.$row['Title'].'</p>
-												<p class="date">'.$myFormatForView.'</p>
-											</div>
-										</div>
-									';
+									//echo out delete function if userid matches current user
+									if(isset($_SESSION['userId'])){
+										if ($_SESSION['userId'] == $row['UserID']){
+											echo '
+												<div class="upload col-md-3">
+													<div class="link-overlay">
+														<a href="data-page.php?filename='.$row['FileName'].'&user='.$_SESSION['uname'].'&title='.$row['Title'].'&v='.$row['ItemID'].'" class="data-page-link">Open</a>
+														<a href="../includes/delete.inc.php?filename='.$row['FileName'].'&user='.$_SESSION['userId'].'&title='.$row['Title'].'&v='.$row['ItemID'].'" onclick="return confirm(\'Are you sure you want to delete '.$row['Title'].'?\')" class="delete-link">Delete</a>
+													</div>
+													<div class="title">
+														<p class="name">'.$row['Title'].'</p>
+														<p class="date">'.$myFormatForView.'</p>
+													</div>
+													</div>';
+										} else {
+											echo '
+												<div class="upload col-md-3">
+													<div class="link-overlay">
+														<a href="data-page.php?filename='.$row['FileName'].'&user='.$_SESSION['uname'].'&title='.$row['Title'].'&v='.$row['ItemID'].'" class="data-page-link">Open</a>
+													</div>
+													<div class="title">
+														<p class="name">'.$row['Title'].'</p>
+														<p class="date">'.$myFormatForView.'</p>
+													</div>
+													</div>';
+										}
+									} else {
+										echo '
+											<div class="upload col-md-3">
+												<div class="link-overlay">
+													<a href="data-page.php?filename='.$row['FileName'].'&user='.$_SESSION['uname'].'&title='.$row['Title'].'&v='.$row['ItemID'].'" class="data-page-link">Open</a>
+												</div>
+												<div class="title">
+													<p class="name">'.$row['Title'].'</p>
+													<p class="date">'.$myFormatForView.'</p>
+												</div>
+												</div>';
+									}
 								}
 							}
 					}

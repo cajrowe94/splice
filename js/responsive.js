@@ -1,18 +1,19 @@
 
 $(document).ready(function(){
   $("#login-dropdown").click(function(){
-    console.log("works");
-
+    //check if the form is visible
     if ($("#login-form").css('visibility') == 'hidden'){
       $("#login-form").css("visibility", "visible");
     } else $("#login-form").css("visibility", "hidden");
-
-
-
-    // if($("login-form").hasClass("responsive-login")){
-    //   $("login-form").removeClass("responsive-login");
-    // } else $("login-form").addClass("responsive-login");
-
-
+  })
+  $(".mobile-nav").click(function(){
+    //check if the nav is visible
+    if ($("#nav-list").css('visibility') == 'hidden'){
+      $("#nav-list").css("visibility", "visible");
+      $("#login-dropdown").css("visibility", "visible");
+    } else {
+      $("#login-dropdown").css("visibility", "hidden");
+      $("#nav-list").css("visibility", "hidden");
+    }
   })
 });

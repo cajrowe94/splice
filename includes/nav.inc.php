@@ -1,6 +1,6 @@
 <nav class="main-nav">
   <h1>SPLICE</h1>
-  <ul>
+  <ul id="nav-list">
     <?php
       //echo out certain nav items if the user is logged in and add active classes where appropriate
       //HOME PAGE
@@ -28,6 +28,7 @@
       else echo '<li><a href="about.php">ABOUT</a></li>';
     ?>
   </ul>
+  <a class="mobile-nav" href="#"><ion-icon name="menu"></ion-icon></a>
   <?php
     if (isset($_SESSION['userId'])){
       echo '
@@ -43,8 +44,8 @@
       echo '
       <a href="#" id="login-dropdown">Login</a>
       <form action="../includes/login.inc.php" method="post" class="user-login" id="login-form">
-        <input type="text" name="unameid" placeholder="Username/Email"><br>
-        <input type="password" name="pword" placeholder="Password"><br>
+        <input type="text" name="unameid" placeholder="Username/Email">
+        <input type="password" name="pword" placeholder="Password">
         <input name="login-user" type="submit" value="Login">
       </form>
       ';

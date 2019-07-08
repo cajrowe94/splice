@@ -3,6 +3,7 @@
 	include '../includes/comment.inc.php';
 	include '../includes/dbh.inc.php';
 	date_default_timezone_set('America/Indianapolis');
+	$_SESSION['currentURL'] = $_SERVER['REQUEST_URI'];
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -90,11 +91,20 @@
 				          WHERE UserID = '$id'";
 					$userresult = $conn->query($usersql);
 				  $userrow = $userresult->fetch_assoc();
+					if ($userrow['UserID'] == $_SESSION['userId']){
+						echo '<div class="comment '.$row['RowID'].'">
+							<p class="comment-message">'.$row['CommentText'].'</p>
+							<span class="comment-author">'.$userrow['FirstName'].' '.$userrow['LastName'].'</span>
+							<span class="comment-date">'.$dateFormat.' @ '.$timeFormat.'</span>
+							<a href="../includes/delete.inc.php?cid='.$row['CommentID'].'" onclick="return confirm(\'Are you sure you want to delete comment?\');">Delete</a>
+						</div>';
+					} else {
 					echo '<div class="comment '.$row['RowID'].'">
 						<p class="comment-message">'.$row['CommentText'].'</p>
 						<span class="comment-author">'.$userrow['FirstName'].' '.$userrow['LastName'].'</span>
 						<span class="comment-date">'.$dateFormat.' @ '.$timeFormat.'</span>
 					</div>';
+				}
 			  }
 			}
 
@@ -104,7 +114,8 @@
 			if (isset($_SESSION['userId'])){
 				if (isset($_GET['v'])){
 					echo '
-					<form class="comment-box-footer" method="POST" action="'.setComment($conn).'">
+					<div class="comment-box-footer">
+					<form method="POST" action="'.setComment($conn).'">
 						<input type="hidden" name="uId" value="'.$_SESSION['userId'].'">
 						<input type="hidden" name="itemId" value="'.$_GET['v'].'">
 						<input type="hidden" name="rowId" value="">
@@ -112,6 +123,7 @@
 						<textarea class="comment-text" wrap="physical" name="message"></textarea>
 						<input name="commentSubmit" type="submit" id="submit-comment"></input>
 					</form>
+					</div>
 					';
 				}
 			}
