@@ -20,7 +20,7 @@
     display: flex;
     flex-direction: column;
     box-shadow: 0px 8px 20px #000;
-    height: 200px;
+    height: 115px;
     justify-content: flex-start;
   }
   .mobile-nav {display: block;}
@@ -28,12 +28,12 @@
     visibility: hidden;
     position: absolute;
     z-index: 99999;
-    top: 210;
-    right: 40;
+    top: 10;
+    right: 50;
   }
   #login-form {
     flex-direction: column;
-    top: 240;
+    top: 155;
     right: 0;
     height: auto;
     align-items: center;
@@ -46,5 +46,8 @@
     left: 80%;
     padding: 5px;
     font-size: 12px;
+  }
+  body {
+    background-size: 80% auto;
   }
 }

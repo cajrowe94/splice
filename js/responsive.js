@@ -13,6 +13,7 @@ $(document).ready(function(){
       $("#login-dropdown").css("visibility", "visible");
     } else {
       $("#login-dropdown").css("visibility", "hidden");
+      $("#login-form").css("visibility", "hidden");
       $("#nav-list").css("visibility", "hidden");
     }
   })

@@ -14,10 +14,15 @@
 				<h1>Hisako Masuda, Ph.D.</h1>
 				<p>Assistant Professor of Biochemistry</p>
 			</div>
-			<div class="intro-desc">
-				<img src="../img/masuda.jpg">
-				<p><span>What is S.P.L.I.C.E?</span><br>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ullamcorper velit sed ullamcorper morbi tincidunt ornare massa eget. Nunc sed blandit libero volutpat sed cras. Ullamcorper velit sed ullamcorper morbi. Ut etiam sit amet nisl purus in. Cursus in hac habitasse platea dictumst quisque. Vulputate eu scelerisque felis imperdiet proin. Enim tortor at auctor urna nunc. Tempor id eu nisl nunc. Vitae semper quis lectus nulla. Vel eros donec ac odio tempor orci dapibus ultrices. Ipsum faucibus vitae aliquet nec ullamcorper. Facilisi etiam dignissim diam quis enim.<br>
-				Diam phasellus vestibulum lorem sed. Nullam non nisi est sit amet facilisis magna etiam tempor. Pellentesque elit ullamcorper dignissim cras tincidunt lobortis feugiat. Hendrerit dolor magna eget est lorem. Mattis enim ut tellus elementum sagittis vitae et leo. Ullamcorper a lacus vestibulum sed arcu non odio. Sapien eget mi proin sed libero enim sed faucibus. At lectus urna duis convallis convallis tellus. Faucibus turpis in eu mi bibendum neque egestas congue. Arcu cursus vitae congue mauris rhoncus.</p>
+			<div class="intro-desc row">
+				<div class="col-lg-6 col-md-6 hide-for-small">
+					<img alt="Dr. Hisako Masuda" src="../img/masuda.jpg">
+				</div>
+				<div class="col-lg-6 col-md-6">
+					<p><span>What is S.P.L.I.C.E?</span><br>SPLICE stands for Student Project Listing and Integrated Comment Environment, and is the culmination of a year of work by students in the Informatics department for Dr. Hisako Masuda to use in her genomics courses.<br><br>
+					The purpose of SPLICE is to provide a centralized repository of past, present, and eventually future products in order to allow her students to see quality examples of past work, to build a database of gene sequences that her students have already studied to allow more interesting sequences to rise to the top, to provide a centralized location for students to collaborate on their projects. A commentary environment is provided within each project, and a unique set of comments can be made on a protein by protein basis inside of each project. With this tool, it is Dr. Masuda’s hope to build a wealth of projects to display for her colleagues and the public.<br><br>
+					Dr. Hisako Masuda holds a Ph.D. in Microbiology and Molecular genetics from Rutgers University, with a double major in Chemistry and Honors Biochemistry from Hiram College in Ohio. She spent time as a postdoctoral fellow at Robert Wood Johnson Medical School, and has been an Assistant Professor at IU Kokomo since 2013. Her main areas of research include bacterial biodegradation of environmental contaminants, the bacterial stress response in toxin-antitoxin systems, and how bacteria spread on solid surfaces.</p>
+				</div>
 			</div>
 		</div>
 	</section>
