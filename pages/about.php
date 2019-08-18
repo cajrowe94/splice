@@ -16,7 +16,7 @@
 			</div>
 			<div class="intro-desc row">
 				<div class="col-lg-6 col-md-6 hide-for-small">
-					<img alt="Dr. Hisako Masuda" src="../img/masuda.jpg">
+					<img class="masuda-img" alt="Dr. Hisako Masuda" src="../img/masuda.jpg">
 				</div>
 				<div class="col-lg-6 col-md-6">
 					<p><span>What is S.P.L.I.C.E?</span><br>SPLICE stands for Student Project Listing and Integrated Comment Environment, and is the culmination of a year of work by students in the Informatics department for Dr. Hisako Masuda to use in her genomics courses.<br><br>

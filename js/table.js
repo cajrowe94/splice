@@ -91,7 +91,7 @@ let parseData = data => {
   //remove empty objects at the end of the array
   parsedData.data.splice(parsedData.data.length-1, 1);
   let str = getQueryVariable("title");
-  let title = str.replace(/%20/g, " ");
+  let title = str.replace(/%20/g, " ").replace(/%27/g, "'");
   $("#title").html(title+" :: "+parsedData.data[0]['Input sequence ID']);
   //send table to be tabulated
   buildTable(parsedData.data);

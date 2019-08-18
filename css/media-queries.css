@@ -8,6 +8,9 @@
   .title .date,
   .title .proj-title {font-size: 60%;}
   .student-uploads {width: 100%;}
+  .intro-desc p {
+    font-size: 57%;
+  }
 }
 @media only screen and (max-width: 768px){
   .main-nav #nav-list {
@@ -49,5 +52,39 @@
   }
   body {
     background-size: 80% auto;
+  }
+  .intro-heading {
+    width: 100%;
+    font-size: 80%;
+  }
+  .intro-desc p {margin-top: 20px;}
+  .intro-desc span {font-size: 130%;}
+  #title {
+    font-size: 70% !important;
+  }
+  .tabulator-col-title {
+  	text-align: center;
+  	font-size: 50%;
+  }
+  .tabulator-cell {
+  	font-size: 60%;
+  }
+  .tabulator-cell a {
+  	font-size: 60%;
+  }
+  .tabulator-responsive-collapse strong {
+  	font-size: 70%;
+  }
+  .tabulator-responsive-collapse td {
+  	font-size: 50%;
+  }
+}
+@media only screen and (max-width: 520px){
+  .comment-box {
+    width: 300px;
+  }
+  .col-info {
+    font-size: 80%;
+    margin-top: 5px;
   }
 }
