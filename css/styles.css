@@ -18,7 +18,6 @@ body {
 	background-repeat: no-repeat;
 	background-position: center;
 }
-
 /*----------------------------------*/
 /*--------NAVIGATION BAR------------*/
 /*----------------------------------*/
@@ -405,7 +404,7 @@ header {
 /*-----------STUDENT PAGE-----------*/
 /*----------------------------------*/
 .upload {
-	max-width: 300px;
+	max-width: 299px;
 }
 
 #student-data-upload {
