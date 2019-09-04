@@ -121,7 +121,7 @@
 						<input type="hidden" name="rowId" value="">
 						<input type="hidden" name="date" value="'.date('Y-m-d H:i:s').'">
 						<textarea class="comment-text" wrap="physical" name="message"></textarea>
-						<input name="commentSubmit" type="submit" id="submit-comment"></input>
+						<input value="Submit" name="commentSubmit" type="submit" id="submit-comment"></input>
 					</form>
 					</div>
 					';

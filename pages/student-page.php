@@ -86,7 +86,6 @@
 		</section>
 		<div class="new-upload">
 			<form>
-
 			</form>
 		</div>
 		<input id="student-data-upload" name="upload" type="button" value="+Upload">

@@ -42,7 +42,6 @@
        );
        mysqli_stmt_execute($statement);
        header("Location: ../pages/student-page.php?upload=success");
-       //move files into temporary location
        $target_dir = "../data/".$_SESSION['uname']."/";
        $target_file = $target_dir . basename($_FILES["data"]["name"]);
        move_uploaded_file($data, $target_file);

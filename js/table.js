@@ -107,6 +107,7 @@ let buildTable = tableData => {
   table = new Tabulator("#data-table", {
     height: "75vh",
     layout: "fitColumns",
+    resizableColumns: false,
     data: tableData,
     columns:[
         {title:"Accession", field:"Accession", align:"center",  formatter:function(cell, formatterParams){
